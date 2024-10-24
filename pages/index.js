@@ -54,6 +54,16 @@ export default function Home() {
     ctx.beginPath();
     ctx.ellipse(x, y, rx, ry, 0, 0, 2 * Math.PI);
     ctx.stroke();
+
+    // Draw foci
+    const fociDistance = Math.sqrt(Math.abs(rx ** 2 - ry ** 2));
+    ctx.fillStyle = "#0000ff";
+    ctx.beginPath();
+    ctx.arc(x + fociDistance, y, 3, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(x - fociDistance, y, 3, 0, 2 * Math.PI);
+    ctx.fill();
   }, [x, y, rx, ry]);
 
   const handleSubmit = (event) => {
