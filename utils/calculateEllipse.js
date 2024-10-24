@@ -3,6 +3,10 @@ function calculateEllipse(majorAxis, minorAxis) {
   const majorAxisLength = 2 * majorAxis;
   const minorAxisLength = 2 * minorAxis;
 
+  console.log(`Foci: ${foci}`);
+  console.log(`Major Axis Length: ${majorAxisLength}`);
+  console.log(`Minor Axis Length: ${minorAxisLength}`);
+
   return { foci, majorAxisLength, minorAxisLength };
 }
 
