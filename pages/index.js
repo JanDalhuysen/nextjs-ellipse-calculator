@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import calculateEllipse from "../utils/calculateEllipse";
 
 export default function Home() {
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
+  const [x, setX] = useState(250);
+  const [y, setY] = useState(250);
   const [rx, setRx] = useState(50);
   const [ry, setRy] = useState(30);
   const [results, setResults] = useState({ foci: 0, majorAxisLength: 0, minorAxisLength: 0 });
@@ -124,7 +124,7 @@ export default function Home() {
           max="250"
           required
         />
-        <button type="submit">Calculate</button>
+        {/* <button type="submit">Calculate</button> */}
       </form>
       <canvas id="ellipseCanvas" width="500" height="500"></canvas>
       <div id="results">
