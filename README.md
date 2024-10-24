@@ -1,5 +1,7 @@
 ![demo](demo.png)
 
+The focus (or foci) of an ellipse can be calculated using the formula: foci = sqrt(abs(majorAxis^2 - minorAxis^2)). This formula is derived from the geometric properties of an ellipse, where the sum of the distances from any point on the ellipse to the two foci is constant and equal to the length of the major axis.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
 
 ## Getting Started
