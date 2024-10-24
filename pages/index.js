@@ -70,6 +70,16 @@ export default function Home() {
     setResults({ foci, majorAxisLength, minorAxisLength });
   };
 
+  useEffect(() => {
+    const major = parseFloat(rx);
+    const minor = parseFloat(ry);
+
+    if (!isNaN(major) && !isNaN(minor) && major > 0 && minor > 0) {
+      const { foci, majorAxisLength, minorAxisLength } = calculateEllipse(major, minor);
+      setResults({ foci, majorAxisLength, minorAxisLength });
+    }
+  }, [rx, ry]);
+
   return (
     <div className="container">
       <h1>Ellipse Calculator</h1>
