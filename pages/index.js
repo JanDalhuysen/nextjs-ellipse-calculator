@@ -1,15 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import calculateEllipse from "../utils/calculateEllipse";
 
 export default function Home() {
-  const [majorAxis, setMajorAxis] = useState("");
-  const [minorAxis, setMinorAxis] = useState("");
-  const [results, setResults] = useState(null);
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
+  const [rx, setRx] = useState(50);
+  const [ry, setRy] = useState(30);
+
+  useEffect(() => {
+    const canvas = document.getElementById("ellipseCanvas");
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    ctx.ellipse(x, y, rx, ry, 0, 0, 2 * Math.PI);
+    ctx.stroke();
+  }, [x, y, rx, ry]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const major = parseFloat(majorAxis);
-    const minor = parseFloat(minorAxis);
+    const major = parseFloat(rx);
+    const minor = parseFloat(ry);
 
     if (isNaN(major) || isNaN(minor) || major <= 0 || minor <= 0) {
       alert("Please enter valid positive numbers for the axes.");
@@ -24,33 +34,41 @@ export default function Home() {
     <div className="container">
       <h1>Ellipse Calculator</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="major-axis">Major Axis:</label>
+        <label htmlFor="x">X:</label>
         <input
           type="number"
-          id="major-axis"
-          value={majorAxis}
-          onChange={(e) => setMajorAxis(e.target.value)}
+          id="x"
+          value={x}
+          onChange={(e) => setX(e.target.value)}
           required
         />
-        <label htmlFor="minor-axis">Minor Axis:</label>
+        <label htmlFor="y">Y:</label>
         <input
           type="number"
-          id="minor-axis"
-          value={minorAxis}
-          onChange={(e) => setMinorAxis(e.target.value)}
+          id="y"
+          value={y}
+          onChange={(e) => setY(e.target.value)}
+          required
+        />
+        <label htmlFor="rx">Radius X:</label>
+        <input
+          type="number"
+          id="rx"
+          value={rx}
+          onChange={(e) => setRx(e.target.value)}
+          required
+        />
+        <label htmlFor="ry">Radius Y:</label>
+        <input
+          type="number"
+          id="ry"
+          value={ry}
+          onChange={(e) => setRy(e.target.value)}
           required
         />
         <button type="submit">Calculate</button>
       </form>
-      {results && (
-        <div id="results">
-          <h2>Results</h2>
-          <p id="foci">Foci: ±{results.foci.toFixed(2)}</p>
-          <p id="axes">
-            Major Axis: {results.majorAxisLength.toFixed(2)}, Minor Axis: {results.minorAxisLength.toFixed(2)}
-          </p>
-        </div>
-      )}
+      <canvas id="ellipseCanvas" width="500" height="500"></canvas>
     </div>
   );
 }
