@@ -29,3 +29,7 @@ form, canvas {
   margin: 20px;
   padding: 20px;
 }
+
+input {
+  border: 1px solid black;
+}
