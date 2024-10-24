@@ -6,6 +6,7 @@ export default function Home() {
   const [y, setY] = useState(0);
   const [rx, setRx] = useState(50);
   const [ry, setRy] = useState(30);
+  const [results, setResults] = useState({ foci: 0, majorAxisLength: 0, minorAxisLength: 0 });
 
   useEffect(() => {
     const canvas = document.getElementById("ellipseCanvas");
@@ -69,6 +70,11 @@ export default function Home() {
         <button type="submit">Calculate</button>
       </form>
       <canvas id="ellipseCanvas" width="500" height="500"></canvas>
+      <div id="results">
+        <h2>Results</h2>
+        <p>Foci: ±{results.foci.toFixed(2)}</p>
+        <p>Major Axis: {results.majorAxisLength.toFixed(2)}, Minor Axis: {results.minorAxisLength.toFixed(2)}</p>
+      </div>
     </div>
   );
 }
