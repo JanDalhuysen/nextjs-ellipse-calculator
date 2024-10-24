@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ellipse Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Ellipse Calculator</h1>
+    <form id="ellipse-form">
+        <label for="major-axis">Major Axis:</label>
+        <input type="number" id="major-axis" name="major-axis" required>
+        <label for="minor-axis">Minor Axis:</label>
+        <input type="number" id="minor-axis" name="minor-axis" required>
+        <button type="submit">Calculate</button>
+    </form>
+    <div id="results">
+        <h2>Results</h2>
+        <p id="foci"></p>
+        <p id="axes"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
